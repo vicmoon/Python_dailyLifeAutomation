@@ -8,7 +8,7 @@ MY_EMAIL = my_creds.my_email
 PASSWORD = my_creds.password
 
 # Check if today is Sunday (6 represents Sunday)
-sunday = date.today().weekday() == 6  
+sunday = date.today().weekday() == 6
 
 def get_recipients(filename="recipients.txt"):
     try:
@@ -28,13 +28,13 @@ if sunday and recipients:
         connection.login(user=MY_EMAIL, password=PASSWORD)  # Use correct credentials
 
         # Email message
-        text = "Duty is calling! It's time to add the money!"
+        text = "Duty is calling! It's time to add the money! \n Sent by a friendly Python script."
 
         for recipient in recipients:
             connection.sendmail(
                 from_addr=MY_EMAIL, 
                 to_addrs=recipient,
-                msg=f"Subject: TEST!! Reminder  :) \n\n{text}"
+                msg=f"Subject: Reminder  :) \n\n{text}"
             )
     print("Emails sent successfully!")
 else:
